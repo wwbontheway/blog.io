@@ -60,7 +60,7 @@ Schemas and users help database administrators manage database security.
 
 *indexspec::=*
 ![indexspec用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/indexspec.gif)
-在HINT的规范中，如果tablespec后面跟着indexspec，可以使用逗号分隔开表名和索引名，但不是必须的。分隔多个indexspec的多个逗号也是允许的，但不是必须要求的（即是逗号可有可无）。
+- 在HINT的规范中，如果tablespec后面跟着indexspec，可以使用逗号分隔开表名和索引名，但不是必须的。分隔多个indexspec的多个逗号也是允许的，但不是必须要求的（即是逗号可有可无）。
 
 ## 在全局HINT中指定多个查询块
 Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这个情况出现，oracle建议在HINT中用指定对象的别名的方式代替用tablespec和indexspec的方式（常用的方式）。
