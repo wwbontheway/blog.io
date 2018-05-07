@@ -21,6 +21,7 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 
 下面的语法图展示了Oracle所支持的两种包含HINT的语法块的注释格式:
 
+*hint：==*
 ![hint用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/hint.gif)
 
 **需要注意的是： 加号（+）使Oracle将注释当作HINT的列表来解析。加号必须紧跟在注释定界符后面，不可以有空格（如--+ 或者/\*+ \*/）**
@@ -43,4 +44,10 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 用户指定的名字可以用QB_NAME这个HINT来设置，详见QB_NAME Hint（后面的文章会说到）
 
 ## 指定全局HINT
+许多HINT既可以应用于特定的表或索引，也可以应用于视图内的表或作为索引列的一部分的列。 语法元素tablespec和indexspec定义了这些全局提示。
+
+*tablespec：==*
+![tablespec用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/tablespec.gif)
+
+- 你必须明确指定在语句中出现表。如果语句里的表使用了一个别名，那么在HINT中就要使用别名而不是表名。然而，HINT中的表名是不需要包括其schema的名字，哪怕在语句中出现了schema名。（schema的意思
 
