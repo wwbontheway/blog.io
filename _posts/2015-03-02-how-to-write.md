@@ -1,13 +1,13 @@
 ---
 layout: post
-title: HINT概述
+title: 模版
 date: 2015-3-02
 categories: oracle优化
 tags: [标签一,标签二]
-description: 优化基础。
+description: 模版。
 ---
 
-还没写。
+模版。
 
 
 
