@@ -20,4 +20,5 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 一个语句块中只能有一个包含HINT的注释，而且这个注释必须紧跟在*SELECT*、*UPDATE*、*INSERT*、*MERGE*或*DELETE*关键字后面
 
 下面的语法图展示了Oracle所支持的两种包含HINT的语法块的注释格式:
+
 ![hint用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/hint.gif)
