@@ -30,11 +30,11 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 
 ## HINT被忽略的情况
 在一下场景中，ORACLE数据库将会忽略HINT而且也不会返回任何报错：
-1.HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦）*
-2.包含HINT的注释没有紧跟在DELETE、INSERT、MERGE、SELECT或UPDATE关键字后面。
-3.HINT的组合相互冲突。不过，数据库会考虑同一个注释中其他的HINT。
-4.数据库环境采用PL\SQL 版本1，比如 Forms version 3 triggers, Oracle Forms 4.5, 和Oracle Reports 2.5。
-5.全局HINT引用多个查询块。（查询块的概念后面会说到）
+- 1.HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦）*
+- 2.包含HINT的注释没有紧跟在DELETE、INSERT、MERGE、SELECT或UPDATE关键字后面。
+- 3.HINT的组合相互冲突。不过，数据库会考虑同一个注释中其他的HINT。
+- 4.数据库环境采用PL\SQL 版本1，比如 Forms version 3 triggers, Oracle Forms 4.5, 和Oracle Reports 2.5。
+- 5.全局HINT引用多个查询块。（查询块的概念后面会说到）
 
 ## 在HINT中指定查询块
 
