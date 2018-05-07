@@ -49,5 +49,22 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 *tablespec：==*
 ![tablespec用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/tablespec.gif)
 
-- 你必须明确指定在语句中出现表。如果语句里的表使用了一个别名，那么在HINT中就要使用别名而不是表名。然而，HINT中的表名是不需要包括其schema的名字，哪怕在语句中出现了schema名。（schema的意思
+- 你必须明确指定在语句中出现表。如果语句里的表使用了一个别名，那么在HINT中就要使用别名而不是表名。然而，HINT中的表名是不需要包括其schema的名字，哪怕在语句中出现了schema名。
+
+*注：ORACLE中的schema的意思可以简单的理解为用户名，具体可以参考官方定义进行理解：
+A schema is a collection of database objects (used by a user.). 
+Schema objects are the logical structures that directly refer to the database’s data.
+A user is a name defined in the database that can connect to and access objects.
+Schemas and users help database administrators manage database security.
+即：一个用户一般对应一个schema,该用户的schema名等于用户名，并作为该用户缺省schema*
+
+*indexspec::=*
+![indexspec用法](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/indexspec.gif)
+在HINT的规范中，如果tablespec后面跟着indexspec，可以使用逗号分隔开表名和索引名，但不是必须的。分隔多个indexspec的多个逗号也是允许的，但不是必须要求的（即是逗号可有可无）。
+
+## 在全局HINT中指定多个查询块
+Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这个情况出现，oracle建议在HINT中用指定对象的别名的方式代替用tablespec和indexspec的方式（常用的方式）。
+
+
+
 
