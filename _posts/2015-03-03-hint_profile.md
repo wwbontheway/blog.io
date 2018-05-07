@@ -66,15 +66,15 @@ Schemas and users help database administrators manage database security.
 Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这个情况出现，oracle建议在HINT中用指定对象的别名的方式代替用tablespec和indexspec的方式（常用的方式）。
 
 例如，如下视图v和表t。
-
-    CREATE VIEW v AS
-      SELECT e.last_name, e.department_id, d.location_id
-      FROM employees e, departments d
-      WHERE e.department_id = d.department_id;
-    CREATE TABLE t AS
-      SELECT * from employees
-      WHERE employee_id < 200;
-
+```sql
+CREATE VIEW v AS
+  SELECT e.last_name, e.department_id, d.location_id
+  FROM employees e, departments d
+  WHERE e.department_id = d.department_id;
+CREATE TABLE t AS
+  SELECT * from employees
+  WHERE employee_id < 200;
+```
 那么下面这个查询中带有LEADING的这个HINT会被忽略掉，因为它也你用了多个询块，即主查询块中包括表t和视图查询块v：
 
     EXPLAIN PLAN
