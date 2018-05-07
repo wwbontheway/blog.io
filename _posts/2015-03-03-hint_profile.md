@@ -1,7 +1,7 @@
 ---
 layout: post
 title: HINT概述
-date: 2015-3-02
+date: 2015-3-03
 categories: oracle优化
 tags: [oracle优化,oracle基础知识]
 description: 优化基础。
@@ -127,6 +127,7 @@ LEADING在以下查询中生效，因为它引用了对象别名，这些对象�
       3       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
       4       TABLE ACCESS   FULL       DEPARTMENTS   D@SEL$2
       5     TABLE ACCESS     FULL       T             T@SEL$1
+
 
 
 
