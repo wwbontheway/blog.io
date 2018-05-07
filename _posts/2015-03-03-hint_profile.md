@@ -30,17 +30,17 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 
 ## HINT被忽略的情况
 在一下场景中，ORACLE数据库将会忽略HINT而且也不会返回任何报错：
-- 1.HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦）*
+- 1.HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦～）*
 - 2.包含HINT的注释没有紧跟在DELETE、INSERT、MERGE、SELECT或UPDATE关键字后面。
 - 3.HINT的组合相互冲突。不过，数据库会考虑同一个注释中其他的HINT。
 - 4.数据库环境采用PL\SQL 版本1，比如 Forms version 3 triggers, Oracle Forms 4.5, 和Oracle Reports 2.5。
 - 5.全局HINT引用多个查询块。（查询块的概念后面会说到）
 
 ## 在HINT中指定查询块
+你可以在多个hint中指定一个可选的查询块的名字（qb_name），用来指定HINT适用于哪个查询块。这种语法可以让你在外部查询中指定一个适用于内联视图中的HINT。
+这个查询块参数的语法格式为@queryblock，其中queryblock是指定查询中某个查询块的标识符。查询块标识符可以是系统生成的或用户自定义的。 当在查询块中执行要应用到这个查询块本身的HINT，那么@queryblock的语法是可以忽略不写的。
+至于系统生成的标识符的查看方式，可以用EXPLAIN PLAN这个查询语句的方法来获得。通过使用带有NO_QUERY_TRANSFORMATION这个HINT的EXPLAIN PLAN语句进行查询，可以确定预转换查询块名称。(关于这个HINT，后面的文章会说到)
+用户指定的名字可以用QB_NAME这个HINT来设置，详见QB_NAME Hint（后面的文章会说到）
 
-
-
-
-
-
+## 指定全局HINT
 
