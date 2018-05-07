@@ -1,6 +1,6 @@
 # Site settings
 title: w的小站 # 你的博客名字，可以定义修订
-header-img: "img/green.jpg"
+header-img: "img/red.jpg"
 tagline: "cn"  
 description: "IT行业技术分析"  # 一句话描述你的博客
 baseurl: ""
@@ -10,7 +10,7 @@ url: "http://cnfeat"  # 此处填写你的博客地址
 owner: 
   name: "wild child" # 填写作者信息：名字
   email: X@gmail.com # 填写作者信息：邮箱
-  bio: "你的博客描述" # 填写作者信息：博客描述
+  bio: "w的小站" # 填写作者信息：博客描述
 
 # Data
 gavatar: img/favicon.png # 浏览器地址栏小图标，可自定义更改
@@ -43,8 +43,8 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "你的名字" # 你的名字
-      header-img: "img/green.jpg" # We don't want posts without a header image, that whould mean white on white
+      author: "wild child" # 你的名字
+      header-img: "img/red.jpg" # We don't want posts without a header image, that whould mean white on white
 
 # Comments 
 comments :
