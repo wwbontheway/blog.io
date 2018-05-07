@@ -76,58 +76,58 @@ CREATE TABLE t AS
   WHERE employee_id < 200;
 ```
 那么下面这个查询中带有LEADING的这个HINT会被忽略掉，因为它也你用了多个询块，即主查询块中包括表t和视图查询块v：
-
-    EXPLAIN PLAN
-      SET STATEMENT_ID = 'Test 1'
-      INTO plan_table FOR
-        (SELECT /*+ LEADING(v.e v.d t) */ *
-         FROM t, v
-         WHERE t.department_id = v.department_id);
-
+```sql
+EXPLAIN PLAN
+  SET STATEMENT_ID = 'Test 1'
+  INTO plan_table FOR
+    (SELECT /*+ LEADING(v.e v.d t) */ *
+     FROM t, v
+     WHERE t.department_id = v.department_id);
+```
 以下SELECT语句返回执行计划，该计划显示LEADING已被忽略：
+```sql
+SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options, object_name,  object_alias
+  FROM plan_table
+  START WITH id = 0 AND statement_id = 'Test 1'
+  CONNECT BY PRIOR id = parent_id AND statement_id = 'Test 1'
+  ORDER BY id;
 
-    SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options, object_name,  object_alias
-      FROM plan_table
-      START WITH id = 0 AND statement_id = 'Test 1'
-      CONNECT BY PRIOR id = parent_id AND statement_id = 'Test 1'
-      ORDER BY id;
-
-     ID OPERATION            OPTIONS    OBJECT_NAME   OBJECT_ALIAS
-    --- -------------------- ---------- ------------- --------------------
-      0 SELECT STATEMENT
-      1   HASH JOIN
-      2     HASH JOIN
-      3       TABLE ACCESS   FULL       DEPARTMENTS   D@SEL$2
-      4       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
-      5     TABLE ACCESS     FULL       T             T@SEL$1
-
+ID OPERATION            OPTIONS    OBJECT_NAME   OBJECT_ALIAS
+--- -------------------- ---------- ------------- --------------------
+  0 SELECT STATEMENT
+  1   HASH JOIN
+  2     HASH JOIN
+  3       TABLE ACCESS   FULL       DEPARTMENTS   D@SEL$2
+  4       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
+  5     TABLE ACCESS     FULL       T             T@SEL$1
+```
 LEADING在以下查询中生效，因为它引用了对象别名，这些对象别名可以在执行计划中找到，它是由以前的查询返回的（即上面查询中的OBJECT_ALIAS列）：
-
-    EXPLAIN PLAN
-      SET STATEMENT_ID = 'Test 2'
-      INTO plan_table FOR
-        (SELECT /*+ LEADING(E@SEL$2 D@SEL$2 T@SEL$1) */ *
-        FROM t, v
-         WHERE t.department_id = v.department_id);
-
+```sql
+EXPLAIN PLAN
+  SET STATEMENT_ID = 'Test 2'
+  INTO plan_table FOR
+    (SELECT /*+ LEADING(E@SEL$2 D@SEL$2 T@SEL$1) */ *
+    FROM t, v
+     WHERE t.department_id = v.department_id);
+```
 以下SELECT语句返回执行计划，该计划显示LEADING生效：
+```sql
+SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options,
+  object_name, object_alias
+  FROM plan_table
+  START WITH id = 0 AND statement_id = 'Test 2'
+  CONNECT BY PRIOR id = parent_id AND statement_id = 'Test 2'
+  ORDER BY id;
 
-    SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options,
-      object_name, object_alias
-      FROM plan_table
-      START WITH id = 0 AND statement_id = 'Test 2'
-      CONNECT BY PRIOR id = parent_id AND statement_id = 'Test 2'
-      ORDER BY id;
-
-     ID OPERATION            OPTIONS    OBJECT_NAME   OBJECT_ALIAS
-    --- -------------------- ---------- ------------- --------------------
-      0 SELECT STATEMENT
-      1   HASH JOIN
-      2     HASH JOIN
-      3       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
-      4       TABLE ACCESS   FULL       DEPARTMENTS   D@SEL$2
-      5     TABLE ACCESS     FULL       T             T@SEL$1
-
+ ID OPERATION            OPTIONS    OBJECT_NAME   OBJECT_ALIAS
+--- -------------------- ---------- ------------- --------------------
+  0 SELECT STATEMENT
+  1   HASH JOIN
+  2     HASH JOIN
+  3       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
+  4       TABLE ACCESS   FULL       DEPARTMENTS   D@SEL$2
+  5     TABLE ACCESS     FULL       T             T@SEL$1
+```
 
 
 ![小w](https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg)
