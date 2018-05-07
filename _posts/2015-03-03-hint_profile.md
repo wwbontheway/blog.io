@@ -31,11 +31,11 @@ HINT应该谨慎使用，仅当你将相关的表的统计信息都收集完，�
 
 ## HINT被忽略的情况
 在一下场景中，ORACLE数据库将会忽略HINT而且也不会返回任何报错：
-- 1.HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦～）*
-- 2.包含HINT的注释没有紧跟在DELETE、INSERT、MERGE、SELECT或UPDATE关键字后面。
-- 3.HINT的组合相互冲突。不过，数据库会考虑同一个注释中其他的HINT。
-- 4.数据库环境采用PL\SQL 版本1，比如 Forms version 3 triggers, Oracle Forms 4.5, 和Oracle Reports 2.5。
-- 5.全局HINT引用多个查询块。（查询块的概念后面会说到）
+1. HINT中包括拼错以及语法错误。不过，数据库会考虑在同一注释中其他正确的指定的HINT。*（曾经见过一个客户，将append这个HINT错误的写成了aaaapend，结果当然是没有生效啦～）*
+2. 包含HINT的注释没有紧跟在DELETE、INSERT、MERGE、SELECT或UPDATE关键字后面。
+3. HINT的组合相互冲突。不过，数据库会考虑同一个注释中其他的HINT。
+4. 数据库环境采用PL\SQL 版本1，比如 Forms version 3 triggers, Oracle Forms 4.5, 和Oracle Reports 2.5。
+5. 全局HINT引用多个查询块。（查询块的概念后面会说到）
 
 ## 在HINT中指定查询块
 你可以在多个hint中指定一个可选的查询块的名字（qb_name），用来指定HINT适用于哪个查询块。这种语法可以让你在外部查询中指定一个适用于内联视图中的HINT。
@@ -66,12 +66,14 @@ Schemas and users help database administrators manage database security.
 Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这个情况出现，oracle建议在HINT中用指定对象的别名的方式代替用tablespec和indexspec的方式（常用的方式）。
 
 例如，如下视图v和表t。
-  CREATE VIEW v AS
-    SELECT e.last_name, e.department_id, d.location_id
-    FROM employees e, departments d
-    WHERE e.department_id = d.department_id;
- 
-  CREATE TABLE t AS
-    SELECT * from employees
-    WHERE employee_id < 200;
+
+    CREATE VIEW v AS
+      SELECT e.last_name, e.department_id, d.location_id
+      FROM employees e, departments d
+      WHERE e.department_id = d.department_id;
+    CREATE TABLE t AS
+      SELECT * from employees
+      WHERE employee_id < 200;
+
+
 
