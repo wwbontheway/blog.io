@@ -2,7 +2,7 @@
 layout: page
 title: "About Me"
 description: "个人介绍" 
-header-img: "img/green.jpg"
+header-img: "img/red.jpg"
 ---
 
 ## 小w，网名 wild child
