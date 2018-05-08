@@ -68,17 +68,11 @@ Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这�
 例如，如下视图v和表t。
 ```sql
 CREATE VIEW v AS
-
   SELECT e.last_name, e.department_id, d.location_id
-  
   FROM employees e, departments d
-  
   WHERE e.department_id = d.department_id;
-  
 CREATE TABLE t AS
-
   SELECT * from employees
-  
   WHERE employee_id < 200;
 ```
 那么下面这个查询中带有LEADING的这个HINT会被忽略掉，因为它也你用了多个询块，即主查询块中包括表t和视图查询块v：
