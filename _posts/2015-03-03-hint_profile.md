@@ -140,5 +140,7 @@ SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options,
 
 
 ![小w](https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg)
-###### 博文内容为小w原创，部分引用自官方文档，如转载请注明出处。^_^
+
+###### 博文内容为小w原创，部分内容引用自官方资料，如转载请注明出处。^_^
+
 ###### 感谢关注w的小站，本小站将不定期(完全看心情～)更新分享技术知识，欢迎阅读，网址：www.itwwb.com
