@@ -1,0 +1,15 @@
+---
+layout: post
+title: 优化目标和方法的HINT
+date: 2015-3-4
+categories: oracle优化
+tags: [oracle优化,oracle基础知识]
+description: 优化基础。
+---
+
+# Optimization Goals and Approaches（最优化目标和路径）
+## ALL_ROWS
+
+![all_rows](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/all_rows_hint.gif)
+
+
