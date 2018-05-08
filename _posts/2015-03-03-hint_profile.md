@@ -66,7 +66,8 @@ Schemas and users help database administrators manage database security.
 Oracle数据库会忽略掉引用多个查询块的全局HINT。为了避免这个情况出现，oracle建议在HINT中用指定对象的别名的方式代替用tablespec和indexspec的方式（常用的方式）。
 
 例如，如下视图v和表t。
-```sql
+
+```
 CREATE VIEW v AS
   SELECT e.last_name, e.department_id, d.location_id
   FROM employees e, departments d
@@ -75,8 +76,10 @@ CREATE TABLE t AS
   SELECT * from employees
   WHERE employee_id < 200;
 ```
+
 那么下面这个查询中带有LEADING的这个HINT会被忽略掉，因为它也你用了多个询块，即主查询块中包括表t和视图查询块v：
-```sql
+
+```
 EXPLAIN PLAN
   SET STATEMENT_ID = 'Test 1'
   INTO plan_table FOR
@@ -84,8 +87,10 @@ EXPLAIN PLAN
      FROM t, v
      WHERE t.department_id = v.department_id);
 ```
+
 以下SELECT语句返回执行计划，该计划显示LEADING已被忽略：
-```sql
+
+```
 SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options, object_name,  object_alias
   FROM plan_table
   START WITH id = 0 AND statement_id = 'Test 1'
@@ -101,8 +106,10 @@ ID OPERATION            OPTIONS    OBJECT_NAME   OBJECT_ALIAS
   4       TABLE ACCESS   FULL       EMPLOYEES     E@SEL$2
   5     TABLE ACCESS     FULL       T             T@SEL$1
 ```
+
 LEADING在以下查询中生效，因为它引用了对象别名，这些对象别名可以在执行计划中找到，它是由以前的查询返回的（即上面查询中的OBJECT_ALIAS列）：
-```sql
+
+```
 EXPLAIN PLAN
   SET STATEMENT_ID = 'Test 2'
   INTO plan_table FOR
@@ -110,8 +117,10 @@ EXPLAIN PLAN
     FROM t, v
      WHERE t.department_id = v.department_id);
 ```
+
 以下SELECT语句返回执行计划，该计划显示LEADING生效：
-```sql
+
+```
 SELECT id, LPAD(' ',2*(LEVEL-1))||operation operation, options,
   object_name, object_alias
   FROM plan_table
