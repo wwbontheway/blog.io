@@ -3,7 +3,7 @@ layout: post
 title: HINT概述
 date: 2015-3-03
 categories: oracle优化
-tags: [oracle优化,oracle基础知识]
+tags: [oracle优化]
 description: 优化基础。
 ---
 
