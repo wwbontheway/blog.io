@@ -2,14 +2,14 @@
 title: w的小站 # 你的博客名字，可以定义修订
 header-img: "img/red.jpg"
 tagline: "cn"  
-description: "IT行业技术分析"  # 一句话描述你的博客
+description: "IT行业技术分享"  # 一句话描述你的博客
 baseurl: ""
-url: "http://cnfeat"  # 此处填写你的博客地址 
+url: "http://itwwb.com/"  # 此处填写你的博客地址 
 
 # About/contact
 owner: 
   name: "wild child" # 填写作者信息：名字
-  email: X@gmail.com # 填写作者信息：邮箱
+  email:  # 填写作者信息：邮箱
   bio: "w的小站" # 填写作者信息：博客描述
 
 # Data
@@ -44,7 +44,7 @@ defaults:
     values:
       layout: "post"
       author: "wild child" # 你的名字
-      header-img: "img/red.jpg" # We don't want posts without a header image, that whould mean white on white
+      header-img: "img/red.jpg" # We don't want posts without a header image, that would mean white on white
 
 # Comments 
 comments :
