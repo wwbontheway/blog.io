@@ -7,7 +7,7 @@ tags: [oracle脚本]
 description: oracle脚本。
 ---
 
-ORACLE中以下划线开头的参数为隐藏参数，正常在sqlplus中进行show parameter <para_name> 查询是查不到的。可以借助两个基表来联合查询：
+ORACLE中以下划线开头的参数为隐藏参，如“_complex_view_merging”，正常在sqlplus中进行show parameter <para_name> 查询是查不到的。可以借助两个基表来联合查询：
 
 查看隐藏参数的脚本：（将x$ksppi和x$ksppcv进行联合查询）：
 
