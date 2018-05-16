@@ -23,7 +23,6 @@ header-img: "img/red.jpg"
 
 ![12cocm](https://acclaim-production-app.s3.amazonaws.com/images/7eb1aaee-7f95-4f52-9b06-1ecbaa1249f5/Oracle-Certification-badge_OC-Master.png)
 
-
-
+![ocp](https://acclaim-production-app.s3.amazonaws.com/images/d67426dd-b52a-427e-9d1f-959b333b173e/Oracle-Certification-badge_OC-Professional.png)
 
 
