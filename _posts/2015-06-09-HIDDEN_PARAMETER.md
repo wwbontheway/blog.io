@@ -2,8 +2,8 @@
 layout: post
 title: ORACLE隐藏参数查询
 date: 2015-06-09
-categories: oracle脚本
-tags: [oracle脚本]
+categories: OracleScripts
+tags: [Oracle,Scripts]
 description: oracle脚本。
 ---
 
