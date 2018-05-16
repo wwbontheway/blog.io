@@ -7,6 +7,9 @@ header-img: "img/red.jpg"
 
 ## 小w，网名 wild child
 
+
+*这个网名源自一首歌曲的名字，一直沿用至今～*
+
 ![wildchild](https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg)
 
 
