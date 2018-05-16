@@ -276,8 +276,9 @@ Predicate Information (identified by operation id):
 
 dba_sql_profiles
 
-10G：sys.sqlprof$attr   /    sqlprof$  
-11G：sys.sqlobj$data  /    sys.sqlobj$
+- 10G：sys.sqlprof$attr   /    sqlprof$  
+
+- 11G：sys.sqlobj$data  /    sys.sqlobj$
 
 ```sql
 
