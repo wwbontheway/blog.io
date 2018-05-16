@@ -9,6 +9,37 @@ description: oracle脚本。
 
 ORACLE中以下划线开头的参数为隐藏参，如“_complex_view_merging”，正常在sqlplus中进行show parameter <para_name> 查询是查不到的。可以借助两个基表来联合查询：
 
+```sql
+
+
+SQL> desc x$ksppi
+
+名称         是否为空? 类型
+------------ -------- ---------------
+ADDR                  RAW(4)           --内存地址
+INDX                  NUMBER           --序号，从0开始
+INST_ID               NUMBER           --instance number
+KSPPINM               VARCHAR2(64)     --参数名称  
+KSPPITY               NUMBER           --参数类型 1,'boolean' 2,'string', 3,'number',4,'file'
+KSPPDESC              VARCHAR2(64)     --描述
+KSPPIFLG              NUMBER           --标志字段（用来说明是isses_modifiable or issys_modifiable
+
+SQL> desc x$ksppcv
+
+名称          是否为空? 类型
+------------- -------- -------------
+ADDR                   RAW(4)         --内存地址
+INDX                   NUMBER         --序号，从0开始
+INST_ID                NUMBER         --instance number
+KSPPSTVL               VARCHAR2(512)  --当前值
+KSPPSTDF               VARCHAR2(9)    --缺省值
+KSPPSTVF               NUMBER         --标志字段，用来说明('Modified' or 'System Modified' or is_adjusted)
+KSPPSTCMNT             VARCHAR2(255)  --comment
+
+
+
+```
+
 查看隐藏参数的脚本：（将x$ksppi和x$ksppcv进行联合查询）：
 
 ```sql
