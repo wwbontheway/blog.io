@@ -4,7 +4,7 @@ header-img: "img/red.jpg"
 tagline: "cn"  
 description: "IT行业技术分享"  # 一句话描述你的博客
 baseurl: ""
-url: "http://itwwb.com/"  # 此处填写你的博客地址 
+url: "http://www.itwwb.com/"  # 此处填写你的博客地址 
 
 # About/contact
 owner: 
@@ -13,8 +13,10 @@ owner:
   bio: "w的小站" # 填写作者信息：博客描述
 
 # Data
-gavatar: img/favicon.png # 浏览器地址栏小图标，可自定义更改
-favicon: img/favicon.png # 浏览器地址栏小图标，可自定义更改
+#gavatar: img/favicon.png # 浏览器地址栏小图标，可自定义更改
+#favicon: img/favicon.png # 浏览器地址栏小图标，可自定义更改
+gavatar: https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg
+favicon: https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg
 
 douban_username:  # 你的豆瓣id
 twitter_username: 
