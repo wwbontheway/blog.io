@@ -78,7 +78,7 @@ Predicate Information (identified by operation id):
 
 ```sql
 
-select /*+leading(a b c) use_nl(a b) use_nl(c) */to_char(a.login_accept) || '~' || trim(a.phone_no) || '~' ||
+select /*+leading(a b c) use_nl(b) use_nl(c) */to_char(a.login_accept) || '~' || trim(a.phone_no) || '~' ||
         a.sm_code || '
 ~' || a.op_code || '~' || a.pay_money || '~' || a.op_time || '~' ||
         a.login_no || '~' || substr(b.org_code, 1, 2)
