@@ -1,13 +1,13 @@
 ---
 layout: post
 title: SQL_PROFILE的绑定及测试(四)
-date: 2016-01-21
+date: 2016-03-21
 categories: OracleScripts
 tags: [Oracle,Scripts]
 description: 优化基础。
 ---
 
-过了"双蛋节"之后，继续进行测试。
+继续进行测试。
 
 上一篇博文测试了使用coe_xfr_sql_profile.sql脚本绑定执行计划之后，Sql Profile的自动修复性，这篇将接着上一篇继续进行别的情况的测试~
 
