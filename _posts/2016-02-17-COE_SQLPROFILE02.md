@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SQL_PROFILE的绑定及测试(二)
-date: 2015-12-08
+date: 2016-02-17
 categories: OracleScripts
 tags: [Oracle,Scripts]
 description: 优化基础。
