@@ -58,24 +58,24 @@ ORA-01722: invalid number
 
 ```sql
 
-select /*+no_merge(t)*/*
-  from (select 
-          LOGIN_NO,
-          LOGIN_ACCEPT,
-          TOTAL_DATE,
-          STORE_TYPE,
-          store_no,
-          end_store_no,
-          num,
-          should_pay,
-          to_number(substr(end_store_no, 11, 7)) - to_number(substr(store_no, 11, 7)) + 1  should_num
-           from Wstorerecord a
-          where trim(store_no) is not null
-            and length(trim(store_no)) = 17
-            and length(trim(end_store_no)) = 17
-            and op_time >= to_date('20100128 15:50:00', 'yyyymmdd hh24:mi:ss')
-            and op_time < to_date('20100128 15:51:00', 'yyyymmdd hh24:mi:ss')) t
- where should_num = 1; 
+select /*+no_merge(t)*/*
+  from (select 
+          LOGIN_NO,
+          LOGIN_ACCEPT,
+          TOTAL_DATE,
+          STORE_TYPE,
+          store_no,
+          end_store_no,
+          num,
+          should_pay,
+          to_number(substr(end_store_no, 11, 7)) - to_number(substr(store_no, 11, 7)) + 1  should_num
+           from Wstorerecord a
+          where trim(store_no) is not null
+            and length(trim(store_no)) = 17
+            and length(trim(end_store_no)) = 17
+            and op_time >= to_date('20100128 15:50:00', 'yyyymmdd hh24:mi:ss')
+            and op_time < to_date('20100128 15:51:00', 'yyyymmdd hh24:mi:ss')) t
+ where should_num = 1; 
 
 ```
 
