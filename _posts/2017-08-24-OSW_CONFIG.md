@@ -403,7 +403,7 @@ drwxr-xr-x 3 root root 4096 Aug 24 17:42 ora11g_Aug24155455_1503567769
 
 ```
 
-传到windows下解压，运行index.html，即可查看各种指标~
+传到windows下解压，运行index.html，即可查看各种指标，801版本的网页输出还是很美观的，这里就不贴图了，朋友们自行配置吧，嘿嘿~
 
 
 
