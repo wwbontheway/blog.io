@@ -1,6 +1,6 @@
 ---
 layout: post
-title: z走近科学，单块读的全表扫描？！
+title: 走近科学，单块读的全表扫描？！
 date: 2017-02-27
 categories: Oracle
 tags: [Oracle]
