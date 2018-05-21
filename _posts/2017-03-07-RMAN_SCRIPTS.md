@@ -13,8 +13,8 @@ description: 简易的Rman备份脚本。
 
 ## 全备脚本fullbackup.sh
 
-```shell
-
+```sql
+ 
 #!/bin/bash
 
 . /home/oracle/.bash_profile 
@@ -49,8 +49,8 @@ exit
 
 ## 归档备份脚本backarch.sh
 
-```shell
-
+```sql
+ 
 #!/bin/bash
 
 . /home/oracle/.bash_profile 
