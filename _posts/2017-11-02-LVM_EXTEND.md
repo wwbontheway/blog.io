@@ -1,7 +1,7 @@
 ---
 layout: post
 title: LVM扩容
-date: 2017-06-06
+date: 2017-11-02
 categories: Linux
 tags: [Linux,Diagnosis]
 description: LVM扩容
