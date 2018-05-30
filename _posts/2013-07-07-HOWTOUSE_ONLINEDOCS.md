@@ -42,7 +42,7 @@ description: 官方文档。
 
 ![update_idx](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/update_index_clauses.gif)
 
-进入之后再次点击update\_globa\l_index\_clause子句，看到下面语法树：
+进入之后再次点击update\_global\_index\_clause子句，看到下面语法树：
 
 ![update_G_idx](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/update_global_index_clause.gif)
 
