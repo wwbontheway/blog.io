@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "文章目录"
+title: "Archive"
 description: "文章归档"
 header-img: "img/orange.jpg"
 ---
