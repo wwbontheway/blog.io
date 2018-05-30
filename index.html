@@ -18,7 +18,7 @@ description: "各种包括但不限于技术的分享，嘿嘿~"
             {{ post.content | strip_html | truncate:150 }}
         </div>
     </a>
-    <p class="post-meta">由 {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} 于 {{ post.date | date: "%B %-d, %Y" }}发布</p>
+    <p class="post-meta">由 {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} 发布于 {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
 
 <hr>
