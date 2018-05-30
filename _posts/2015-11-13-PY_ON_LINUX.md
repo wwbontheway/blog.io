@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux下python3的安装
-date: 2016-11-13
+date: 2015-11-13
 categories: Python
 tags: [Python]
 description: python3安装。
