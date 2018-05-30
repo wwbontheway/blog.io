@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【优化】SQL中连接列的运算
+title: SQL中连接列的运算
 date: 2016-08-03
 categories: OracleTuning
 tags: [Oracle,Tuning]
