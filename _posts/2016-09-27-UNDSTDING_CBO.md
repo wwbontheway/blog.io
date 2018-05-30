@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【优化】通过理解CBO进行优化
+title: 通过理解CBO进行优化
 date: 2016-09-27
 categories: OracleTuning
 tags: [Oracle,Tuning]
