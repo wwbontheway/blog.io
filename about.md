@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "关于小w"
+title: "About w"
 description: "个人介绍" 
 header-img: "img/red.jpg"
 ---
