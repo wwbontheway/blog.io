@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【优化】错误的表连接方式-例2
+title: 错误的表连接方式-例2
 date: 2016-09-09
 categories: OracleTuning
 tags: [Oracle,Tuning]
