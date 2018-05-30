@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RMAN备份脚本
-date: 2017-03-07
+date: 2013-11-20
 categories: OracleScripts
 tags: [Oracle,Scripts]
 description: 简易的Rman备份脚本。
