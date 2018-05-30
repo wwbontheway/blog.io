@@ -24,7 +24,7 @@ description: 官方文档。
 ![alter_table](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/alter_table.gif)
 
 
-这个图片就是对应的语法树的主干，大写默认是关键字的表示，在语法中不能省略的。里面有很多分支，那么我上面举的例子是查询**移动分区**的语法，总所周知，分区肯定是分区表，所以继续点击下面的alter\_table\_partitioning子句，进入分区的语法，之后会看到下面这张图：
+这个图片就是对应的语法树的主干，大写默认是关键字的表示，在语法中不能省略的。里面有很多分支，那么我上面举的例子是查询**移动分区**的语法，众所周知，分区肯定是分区表，所以继续点击下面的alter\_table\_partitioning子句，进入分区的语法，之后会看到下面这张图：
 
 ![partitoning](https://docs.oracle.com/cd/E11882_01/server.112/e41084/img/alter_table_partitioning.gif)
 
