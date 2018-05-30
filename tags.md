@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tags"
-description: "分类浏览文档"  
+description: "分类浏览"  
 header-img: "img/semantic.jpg"  
 ---
 
