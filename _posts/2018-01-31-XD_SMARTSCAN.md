@@ -80,35 +80,36 @@ TAB_MID为实体表，非分区表，数据量大概在420w左右，SEGMENT SIZE
 FUNC1是一个自定义的函数，结构如下。
 
 ```sql
-SQL> select text from dba_source where name ='FN_DEFINITE_REGION' order by line;
+SQL> select text from dba_source where name ='FN_DEFINITE_REGION' order by line;
 
 TEXT
 ------------------------------------------------------------------------------
-FUNCTION FN_DEFINITE_REGION
+FUNCTION FN_DEFINITE_REGION
 (
-    P_IN_NUMBER IN NUMBER, 
-    P_IN_TYPE   IN VARCHAR2 
-) RETURN VARCHAR2 IS
-    P_OUT_RESULT VARCHAR2(20);
+    P_IN_NUMBER IN NUMBER, 
+    P_IN_TYPE   IN VARCHAR2 
+) RETURN VARCHAR2 IS
+    P_OUT_RESULT VARCHAR2(20);
 
 BEGIN
-    IF P_IN_NUMBER IS NULL THEN
-        P_OUT_RESULT :='';
-      return P_OUT_RESULT;
-    END IF;
-    SELECT CODE
-      INTO P_OUT_RESULT
-      FROM CD_CODE_INTERVAL INTER
-     WHERE INTER.TYPE_ID =  P_IN_TYPE
-       AND P_IN_NUMBER >= INTER.SCOPE_START
-       AND P_IN_NUMBER < INTER.SCOPE_END
-       ;
-    RETURN P_OUT_RESULT;
+    IF P_IN_NUMBER IS NULL THEN
+        P_OUT_RESULT :='';
+      return P_OUT_RESULT;
+    END IF;
+    SELECT CODE
+      INTO P_OUT_RESULT
+      FROM CD_CODE_INTERVAL INTER
+     WHERE INTER.TYPE_ID =  P_IN_TYPE
+       AND P_IN_NUMBER >= INTER.SCOPE_START
+       AND P_IN_NUMBER < INTER.SCOPE_END
+       ;
+    RETURN P_OUT_RESULT;
 EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        RETURN P_OUT_RESULT;
+    WHEN NO_DATA_FOUND THEN
+        RETURN P_OUT_RESULT;
 END;
 ```
+
 
 如上，这个函数是在查询一个CD_CODE_INTERVAL的表，对应的SQL在数据库中为如下样子：
 
