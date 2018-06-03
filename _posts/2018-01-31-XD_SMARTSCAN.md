@@ -36,11 +36,11 @@ Smart Scan给数据库返回的并非如传统数据库一样，是数据块，�
  
 这种读取方式是受三个隐藏参数影响的
 
-1. \_small\_table\_threshold：单位是数据块个数。当表或索引块超过这个参数值，Oracle将考虑使用direct path read代替buffer read，这个隐藏参数用来界定大表和小表。
+1. **\_small\_table\_threshold：**单位是数据块个数。当表或索引块超过这个参数值，Oracle将考虑使用direct path read代替buffer read，这个隐藏参数用来界定大表和小表。
 
-2. \_very\_large\_object\_threshold：单位是百分比，默认是500，即是500倍。当表大于500倍的buffer cache，Oracle就认为这个表示超级大表。
+2. **\_very\_large\_object\_threshold：**单位是百分比，默认是500，即是500倍。当表大于500倍的buffer cache，Oracle就认为这个表示超级大表。
 
-3. \_direct\_read\_decision\_statistics\_driven：来决定从哪方面获取数据块的数量。默认是true，表示判断是否要进行direct path read的时候是从表的统计信息来决定的，而非表的实际数据块数量。如果关闭此参数，则会由表的段头信息中的实际数据块数量来决定。
+3. **\_direct\_read\_decision\_statistics\_driven：**来决定从哪方面获取数据块的数量。默认是true，表示判断是否要进行direct path read的时候是从表的统计信息来决定的，而非表的实际数据块数量。如果关闭此参数，则会由表的段头信息中的实际数据块数量来决定。
 
 那么经过上面简单的介绍，应该对Smart Scan有了个初步的了解，在深入的介绍这篇博文就不写了，感兴趣的可以自行google或者继续关注我未来会写一个专题（有可能吧，完全看心情，嘿嘿~~）
 
