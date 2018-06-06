@@ -19,9 +19,9 @@ MongoDB可以通过官方网站 https://www.mongodb.com/download-center 下载
 
 操作系统|主机名| IP|端口号| MongoDB角色 
 :-----|:--------|:--------|:-----|:---------
-RHEL6.5|master|192.168.56.123|27017 |Primary
-RHEL6.5|master|192.168.56.123 |27020|Arbiter
-RHEL6.5|slave1|192.168.56.128 |27017|Scendary
+RHEL6.5|wmaster|192.168.56.123|27017 |Primary
+RHEL6.5|wmaster|192.168.56.123 |27020|Arbiter
+RHEL6.5|wslave|192.168.56.128 |27017|Scendary
 
 ## 安装软件
 
@@ -43,7 +43,7 @@ echo "export PATH=$PATH:$MONGO_HOME/bin" >> /home/mongo/.bash_profile
 ####Primary的配置文件
 
 ```shell
-[mongo@master conf]$ cat primary27017.cnf 
+[mongo@wmaster conf]$ cat primary27017.cnf 
 systemLog:
   destination: file
   path: /usr/local/mongodb/logs/shard1.log 
@@ -76,7 +76,7 @@ sharding:
 #### 仲裁节点的配置文件
 
 ```shell
-[mongo@master conf]$ cat arbiter1.conf 
+[mongo@wmaster conf]$ cat arbiter1.conf 
 systemLog:
   destination: file
   path: /usr/local/mongodb/logs/arbiter1.log 
@@ -109,7 +109,7 @@ sharding:
 #### Secondary的配置文件
 
 ```shell
-[mongo@slave1 conf]$ cat secondary27017.cnf 
+[mongo@wslave conf]$ cat secondary27017.cnf 
 systemLog:
   destination: file
   path: /usr/local/mongodb/logs/shard1.log 
@@ -143,15 +143,15 @@ sharding:
 master节点：
 
 ```shell
-[mongo@master conf]$ mongod -f /usr/local/mongodb/conf/primary27017.cnf 
+[mongo@wmaster conf]$ mongod -f /usr/local/mongodb/conf/primary27017.cnf 
 about to fork child process, waiting until server is ready for connections.
 forked process: 2674
 child process started successfully, parent exiting
-[mongo@master conf]$ mongod -f /usr/local/mongodb/conf/arbiter1.conf 
+[mongo@wmaster conf]$ mongod -f /usr/local/mongodb/conf/arbiter1.conf 
 about to fork child process, waiting until server is ready for connections.
 forked process: 2749
 child process started successfully, parent exiting
-[mongo@master conf]$ ps aux | grep -i mongod
+[mongo@wmaster conf]$ ps aux | grep -i mongod
 mongo     2674  0.7  4.6 1062196 47852 ?       Sl   12:54   0:02 mongod -f /usr/local/mongodb/conf/primary27017.cnf
 mongo     2749  0.5  4.3 1062196 44892 ?       Sl   12:58   0:00 mongod -f /usr/local/mongodb/conf/arbiter1.conf
 mongo     2795  0.0  0.0 103244   876 pts/0    S+   13:00   0:00 grep -i mongod
@@ -160,11 +160,11 @@ mongo     2795  0.0  0.0 103244   876 pts/0    S+   13:00   0:00 grep -i mongod
 slave1节点
 
 ```shell
-[mongo@slave1 ~]$ mongod -f /usr/local/mongodb/conf/secondary27017.cnf 
+[mongo@wslave ~]$ mongod -f /usr/local/mongodb/conf/secondary27017.cnf 
 about to fork child process, waiting until server is ready for connections.
 forked process: 2959
 child process started successfully, parent exiting
-[mongo@slave1 ~]$ ps aux | grep -i mongod
+[mongo@wslave ~]$ ps aux | grep -i mongod
 mongo     2959  1.4  4.0 1062120 41040 ?       Sl   13:06   0:00 mongod -f /usr/local/mongodb/conf/secondary27017.cnf
 mongo     2985  0.0  0.0 103244   880 pts/0    S+   13:06   0:00 grep -i mongod
 ```
