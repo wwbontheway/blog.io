@@ -9,13 +9,13 @@ description: MongoDB复制集搭建
 
 接上篇，本部分主要介绍MongoDB复制集的配置以及一些简单的测试～
 
-##环境信息
+## 环境信息
 
 操作系统|主机名| IP|端口号| MongoDB角色 
 :-----|:--------|:--------|:-----|:---------
-RHEL6.5|master|192.168.56.123|27017 |Primary
-RHEL6.5|master|192.168.56.123 |27020|Arbiter
-RHEL6.5|slave1|192.168.56.128 |27017|Scendary
+RHEL6.5|wmaster|192.168.56.123|27017 |Primary
+RHEL6.5|wmaster|192.168.56.123 |27020|Arbiter
+RHEL6.5|wslave|192.168.56.128 |27017|Scendary
 
 
 ## 初始化复制集
@@ -23,7 +23,7 @@ RHEL6.5|slave1|192.168.56.128 |27017|Scendary
 登入任意一台机器的mongodb执行，因为是全新的复制集，所以可以任意进入一台执行。如果是一台有数据，则需要在有数据上执行。如果多台有数据则不能初始化。
 
 ```sql
-[mongo@master ~]$ mongo -host 192.168.56.123 -port 27017
+[mongo@wmaster ~]$ mongo -host 192.168.56.123 -port 27017
 MongoDB shell version v3.4.9
 connecting to: mongodb://192.168.56.123:27017/
 MongoDB server version: 3.4.9
@@ -139,7 +139,7 @@ config={_id:'rep1',members:[{_id:0,host:'192.168.56.123:27017'},{_id:1,host:'192
 登录Secondary节点，验证一下：
 
 ```sql
-[mongo@master ~]$ mongo -host 192.168.56.128 -port 27017
+[mongo@wmaster ~]$ mongo -host 192.168.56.128 -port 27017
 MongoDB shell version v3.4.9
 connecting to: mongodb://192.168.56.128:27017/
 MongoDB server version: 3.4.9
@@ -174,9 +174,9 @@ rep1:SECONDARY> rs.slaveOk()
 #### 在Primary节点上插入数据
 
 ```sql
-[mongo@master ~]$ mongo -host master -port 27017
+[mongo@wmaster ~]$ mongo -host wmaster -port 27017
 MongoDB shell version v3.4.9
-connecting to: mongodb://master:27017/
+connecting to: mongodb://wmaster:27017/
 MongoDB server version: 3.4.9
 ...
 rep1:PRIMARY> show dbs
@@ -210,9 +210,9 @@ rep1:SECONDARY> db.users.find()
 #### 验证一下仲裁节点能否看到数据
 
 ```sql
-[mongo@master ~]$ mongo -host master -port 27020
+[mongo@wmaster ~]$ mongo -host wmaster -port 27020
 MongoDB shell version v3.4.9
-connecting to: mongodb://master:27020/
+connecting to: mongodb://wmaster:27020/
 MongoDB server version: 3.4.9
 ...
 rep1:ARBITER> db
@@ -236,7 +236,7 @@ rep1:ARBITER>
 #### 将Primary节点关闭
 
 ```sql
-[mongo@master ~]$ mongo
+[mongo@wmaster ~]$ mongo
 MongoDB shell version v3.4.9
 connecting to: mongodb://127.0.0.1:27017
 MongoDB server version: 3.4.9
@@ -344,18 +344,18 @@ rep1:PRIMARY>
 这时候再把192.168.56.123:27017启动，观察一下复制集状态：
 
 ```shell
-[mongo@master ~]$ ps -ef | grep mongod
+[mongo@wmaster ~]$ ps -ef | grep mongod
 mongo     2749     1  0 12:58 ?        00:00:30 mongod -f /usr/local/mongodb/conf/arbiter1.conf
 mongo     3730  3185  0 14:27 pts/3    00:00:00 grep mongod
-[mongo@master ~]$ mongod -f /usr/local/mongodb/conf/primary27017.cnf
+[mongo@wmaster ~]$ mongod -f /usr/local/mongodb/conf/primary27017.cnf
 about to fork child process, waiting until server is ready for connections.
 forked process: 3741
 child process started successfully, parent exiting
-[mongo@master ~]$ ps -ef | grep mongod
+[mongo@wmaster ~]$ ps -ef | grep mongod
 mongo     2749     1  0 12:58 ?        00:00:30 mongod -f /usr/local/mongodb/conf/arbiter1.conf
 mongo     3741     1  3 14:27 ?        00:00:00 mongod -f /usr/local/mongodb/conf/primary27017.cnf
 mongo     3819  3185  0 14:28 pts/3    00:00:00 grep mongod
-[mongo@master ~]$ mongo -host 192.168.56.123 -port 27017
+[mongo@wmaster ~]$ mongo -host 192.168.56.123 -port 27017
 MongoDB shell version v3.4.9
 connecting to: mongodb://192.168.56.123:27017/
 MongoDB server version: 3.4.9
