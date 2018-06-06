@@ -441,7 +441,7 @@ rep1:SECONDARY> rs.status()
 rep1:SECONDARY>
 ```
 
-如上，192.168.56.123:27017的状态已经变为Secondary。
+如上，192.168.56.123:27017重新回到了复制集中，并且状态已经变为Secondary。
 
 
 
