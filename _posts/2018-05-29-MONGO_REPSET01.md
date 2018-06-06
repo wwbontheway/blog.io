@@ -40,7 +40,7 @@ echo "export PATH=$PATH:$MONGO_HOME/bin" >> /home/mongo/.bash_profile
 
 ## 编辑配置文件
 
-####Primary的配置文件
+#### Primary的配置文件
 
 ```shell
 [mongo@wmaster conf]$ cat primary27017.cnf 
@@ -140,7 +140,7 @@ sharding:
 ```
 ## 启动MongoDB
 
-master节点：
+master节点:
 
 ```shell
 [mongo@wmaster conf]$ mongod -f /usr/local/mongodb/conf/primary27017.cnf 
@@ -157,7 +157,7 @@ mongo     2749  0.5  4.3 1062196 44892 ?       Sl   12:58   0:00 mongod -f /usr/
 mongo     2795  0.0  0.0 103244   876 pts/0    S+   13:00   0:00 grep -i mongod
 ```
 
-slave1节点
+slave1节点:
 
 ```shell
 [mongo@wslave ~]$ mongod -f /usr/local/mongodb/conf/secondary27017.cnf 
