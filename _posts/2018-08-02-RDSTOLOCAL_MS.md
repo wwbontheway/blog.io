@@ -165,9 +165,9 @@ mysql> flush privileges;
 
 ### 启动主从复制
 
-```sql
 待从库恢复完成之后，从库中执行下面命令：
 
+```sql
 mysql> change master to master_host = 'masterhost.mysql.rds.aliyuncs.com', master_port = 3306, master_user = 'repl', master_password='Password!123', master_auto_position = 1;
 
 mysql> start slave;
