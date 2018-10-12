@@ -191,24 +191,24 @@ ProxySQL中监控服务器组的状态：
 
 ```sql
 ProxysqlAdmin>select  hostgroup,schemaname,username,digest_text,count_star from stats_mysql_query_digest order by last_seen desc;
-+-----------+--------------------+-------------+------------------------------------------------+------------+
-| hostgroup | schemaname         | username    | digest_text                                    | count_star |
-+-----------+--------------------+-------------+------------------------------------------------+------------+
-| 0         | information_schema | produser | select @@version_comment limit ?                  | 3          |
-| 1         | test               | produser | select * from testw01 limit ?                     | 1          |
-| 1         | test               | produser | select * from testw01                             | 2          |
-| 0         | test               | produser | select * from testw01 for update                  | 1          |
-| 0         | test               | produser | insert into testw01 values(?)                     | 1          |
-| 0         | test               | produser | show create table testw01                         | 1          |
-| 0         | test               | produser | create table wtab1(a int)                         | 1          |
-| 0         | test               | produser | show tables                                       | 2          |
-| 1         | information_schema | produser | SELECT DATABASE()                                 | 1          |
-| 0         | test               | produser | show databases                                    | 1          |
-| 1         | information_schema | produser | select * from wdb1.testw03 limit ?                | 1          |
-| 0         | information_schema | produser | show grants                                       | 2          |
-| 0         | information_schema | produser | show databases                                    | 3          |
-| 1         | information_schema | produser | select ?                                          | 2          |
-+-----------+--------------------+-------------+------------------------------------------------+------------+
++-----------+--------------------+----------+-----------------------------------+------------+
+| hostgroup | schemaname         | username | digest_text                       | count_star |
++-----------+--------------------+----------+-----------------------------------+------------+
+| 0         | information_schema | produser | select @@version_comment limit ?  | 3          |
+| 1         | test               | produser | select * from testw01 limit ?     | 1          |
+| 1         | test               | produser | select * from testw01             | 2          |
+| 0         | test               | produser | select * from testw01 for update  | 1          |
+| 0         | test               | produser | insert into testw01 values(?)     | 1          |
+| 0         | test               | produser | show create table testw01         | 1          |
+| 0         | test               | produser | create table wtab1(a int)         | 1          |
+| 0         | test               | produser | show tables                       | 2          |
+| 1         | information_schema | produser | SELECT DATABASE()                 | 1          |
+| 0         | test               | produser | show databases                    | 1          |
+| 1         | information_schema | produser | select * from wdb1.testw03 limit ?| 1          |
+| 0         | information_schema | produser | show grants                       | 2          |
+| 0         | information_schema | produser | show databases                    | 3          |
+| 1         | information_schema | produser | select ?                          | 2          |
++-----------+--------------------+----------+-----------------------------------+------------+
 ```
 
 
