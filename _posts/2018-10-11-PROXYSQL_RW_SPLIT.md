@@ -10,8 +10,10 @@ description: ProxySQL实现MySQL主从的读写分离。
 测试了一下ProxySQL实现MySQL主从的读写分离，这里面说明一下，我的主从是云到本地的环境。另外个人看完ProxySQL之后，感觉这个中间件功能确实很好用，相对于mycat那种xml的规则配置，这种类似数据库的操作的规则配置令我这个做了多年数据库的人感到很舒服，嗯嗯~
 
 ProxySQL下载地址：
+```
 https://github.com/sysown/proxysql/releases
 https://www.percona.com/downloads/proxysql
+```
 
 注：文中涉及信息,约定如下：
 
