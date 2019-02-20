@@ -348,9 +348,160 @@ mongoshard1:PRIMARY> rs.status()
 }
 mongoshard1:PRIMARY>
 ```
+监控日志：
+```
+2019-02-20T19:07:34.908+0800 I STORAGE  [replication-81] Finishing collection drop for local.temp_oplog_buffer (4474d2d3-d8bc-4ba8-95cc-a6431ad5f34d).
+2019-02-20T19:07:35.670+0800 I REPL     [replication-81] initial sync done; took 19201s.
+2019-02-20T19:07:35.670+0800 I STORAGE  [replication-81] Triggering the first stable checkpoint. Initial Data: Timestamp(1550660257, 1589) PrevStable: Timestamp(0, 0) CurrStable: Timestamp(1550660257, 1589)
+2019-02-20T19:07:35.670+0800 I REPL     [replication-81] transition to RECOVERING from STARTUP2
+2019-02-20T19:07:35.671+0800 I REPL     [replication-81] Starting replication fetcher thread
+2019-02-20T19:07:35.673+0800 I REPL     [replication-81] Starting replication applier thread
+2019-02-20T19:07:35.673+0800 I REPL     [replication-81] Starting replication reporter thread
+2019-02-20T19:07:35.673+0800 I REPL     [rsSync-0] Starting oplog application
+2019-02-20T19:07:35.673+0800 I REPL     [rsSync-0] transition to SECONDARY from RECOVERING
+2019-02-20T19:07:35.673+0800 I REPL     [rsSync-0] Resetting sync source to empty, which was :27017
+2019-02-20T19:07:35.674+0800 I REPL     [rsBackgroundSync] sync source candidate: 10.88.190.30:28017
+2019-02-20T19:07:35.677+0800 I REPL     [rsBackgroundSync] Changed sync source from empty to 10.88.190.30:28017
+2019-02-20T19:07:35.677+0800 I ASIO     [RS] Connecting to 10.88.190.30:28017
+2019-02-20T19:07:36.455+0800 I SH_REFR  [ShardServerCatalogCacheLoader-1] Refresh for database config took 598423 ms and found { _id: "config", primary: "config", partitioned: true }
 
+```
 
+查看复制集状态：
 
+```
+mongoshard1:SECONDARY> rs.status()
+{
+	"set" : "mongoshard1",
+	"date" : ISODate("2019-02-20T11:10:20.347Z"),
+	"myState" : 2,
+	"term" : NumberLong(2),
+	"syncingTo" : "10.88.190.30:28017",
+	"syncSourceHost" : "10.88.190.30:28017",
+	"syncSourceId" : 2,
+	"heartbeatIntervalMillis" : NumberLong(2000),
+	"optimes" : {
+		"lastCommittedOpTime" : {
+			"ts" : Timestamp(1550661020, 262),
+			"t" : NumberLong(2)
+		},
+		"readConcernMajorityOpTime" : {
+			"ts" : Timestamp(1550661020, 262),
+			"t" : NumberLong(2)
+		},
+		"appliedOpTime" : {
+			"ts" : Timestamp(1550661020, 262),
+			"t" : NumberLong(2)
+		},
+		"durableOpTime" : {
+			"ts" : Timestamp(1550661020, 262),
+			"t" : NumberLong(2)
+		}
+	},
+	"lastStableCheckpointTimestamp" : Timestamp(1550660988, 1438),
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "10.88.190.10:28017",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 19368,
+			"optime" : {
+				"ts" : Timestamp(1550661020, 262),
+				"t" : NumberLong(2)
+			},
+			"optimeDate" : ISODate("2019-02-20T11:10:20Z"),
+			"syncingTo" : "10.88.190.30:28017",
+			"syncSourceHost" : "10.88.190.30:28017",
+			"syncSourceId" : 2,
+			"infoMessage" : "",
+			"configVersion" : 1,
+			"self" : true,
+			"lastHeartbeatMessage" : ""
+		},
+		{
+			"_id" : 1,
+			"name" : "10.88.190.20:28017",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 19367,
+			"optime" : {
+				"ts" : Timestamp(1550661019, 2350),
+				"t" : NumberLong(2)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(1550661019, 2350),
+				"t" : NumberLong(2)
+			},
+			"optimeDate" : ISODate("2019-02-20T11:10:19Z"),
+			"optimeDurableDate" : ISODate("2019-02-20T11:10:19Z"),
+			"lastHeartbeat" : ISODate("2019-02-20T11:10:19.570Z"),
+			"lastHeartbeatRecv" : ISODate("2019-02-20T11:10:20.037Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "10.88.190.30:28017",
+			"syncSourceHost" : "10.88.190.30:28017",
+			"syncSourceId" : 2,
+			"infoMessage" : "",
+			"configVersion" : 1
+		},
+		{
+			"_id" : 2,
+			"name" : "10.88.190.30:28017",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 19367,
+			"optime" : {
+				"ts" : Timestamp(1550661019, 2350),
+				"t" : NumberLong(2)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(1550661019, 2350),
+				"t" : NumberLong(2)
+			},
+			"optimeDate" : ISODate("2019-02-20T11:10:19Z"),
+			"optimeDurableDate" : ISODate("2019-02-20T11:10:19Z"),
+			"lastHeartbeat" : ISODate("2019-02-20T11:10:19.570Z"),
+			"lastHeartbeatRecv" : ISODate("2019-02-20T11:10:19.577Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "",
+			"syncSourceHost" : "",
+			"syncSourceId" : -1,
+			"infoMessage" : "",
+			"electionTime" : Timestamp(1550576233, 1007),
+			"electionDate" : ISODate("2019-02-19T11:37:13Z"),
+			"configVersion" : 1
+		}
+	],
+	"ok" : 1,
+	"operationTime" : Timestamp(1550661020, 262),
+	"$gleStats" : {
+		"lastOpTime" : Timestamp(0, 0),
+		"electionId" : ObjectId("000000000000000000000000")
+	},
+	"lastCommittedOpTime" : Timestamp(1550661020, 262),
+	"$configServerState" : {
+		"opTime" : {
+			"ts" : Timestamp(1550661015, 7),
+			"t" : NumberLong(1)
+		}
+	},
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1550661020, 262),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+mongoshard1:SECONDARY> 
+```
+
+成功恢复。
 
 
 ![小w](https://wx2.sinaimg.cn/mw1024/891ecf4fly1fr361nvrcnj207w07sad7.jpg)
