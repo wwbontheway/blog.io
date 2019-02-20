@@ -217,7 +217,137 @@ now:                     Wed Feb 20 2019 15:05:03 GMT+0800 (CST)
 https://docs.mongodb.com/manual/tutorial/change-oplog-size/#oplog
 
 更改之后重新同步即可。
-
+```
+mongoshard1:PRIMARY> rs.status()
+{
+	"set" : "mongoshard1",
+	"date" : ISODate("2019-02-20T10:56:19.281Z"),
+	"myState" : 1,
+	"term" : NumberLong(2),
+	"syncingTo" : "",
+	"syncSourceHost" : "",
+	"syncSourceId" : -1,
+	"heartbeatIntervalMillis" : NumberLong(2000),
+	"optimes" : {
+		"lastCommittedOpTime" : {
+			"ts" : Timestamp(1550660179, 2144),
+			"t" : NumberLong(2)
+		},
+		"readConcernMajorityOpTime" : {
+			"ts" : Timestamp(1550660179, 2144),
+			"t" : NumberLong(2)
+		},
+		"appliedOpTime" : {
+			"ts" : Timestamp(1550660179, 2151),
+			"t" : NumberLong(2)
+		},
+		"durableOpTime" : {
+			"ts" : Timestamp(1550660179, 2147),
+			"t" : NumberLong(2)
+		}
+	},
+	"lastStableCheckpointTimestamp" : Timestamp(1550660157, 7890),
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "10.88.190.10:28017",
+			"health" : 1,
+			"state" : 5,
+			"stateStr" : "STARTUP2",
+			"uptime" : 18526,
+			"optime" : {
+				"ts" : Timestamp(0, 0),
+				"t" : NumberLong(-1)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(0, 0),
+				"t" : NumberLong(-1)
+			},
+			"optimeDate" : ISODate("1970-01-01T00:00:00Z"),
+			"optimeDurableDate" : ISODate("1970-01-01T00:00:00Z"),
+			"lastHeartbeat" : ISODate("2019-02-20T10:56:17.411Z"),
+			"lastHeartbeatRecv" : ISODate("2019-02-20T10:56:19.269Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "10.88.190.30:28017",
+			"syncSourceHost" : "10.88.190.30:28017",
+			"syncSourceId" : 2,
+			"infoMessage" : "",
+			"configVersion" : 1
+		},
+		{
+			"_id" : 1,
+			"name" : "10.88.190.20:28017",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 616377,
+			"optime" : {
+				"ts" : Timestamp(1550660178, 6845),
+				"t" : NumberLong(2)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(1550660178, 6726),
+				"t" : NumberLong(2)
+			},
+			"optimeDate" : ISODate("2019-02-20T10:56:18Z"),
+			"optimeDurableDate" : ISODate("2019-02-20T10:56:18Z"),
+			"lastHeartbeat" : ISODate("2019-02-20T10:56:19.007Z"),
+			"lastHeartbeatRecv" : ISODate("2019-02-20T10:56:17.752Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "10.88.190.30:28017",
+			"syncSourceHost" : "10.88.190.30:28017",
+			"syncSourceId" : 2,
+			"infoMessage" : "",
+			"configVersion" : 1
+		},
+		{
+			"_id" : 2,
+			"name" : "10.88.190.30:28017",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 3468596,
+			"optime" : {
+				"ts" : Timestamp(1550660179, 2151),
+				"t" : NumberLong(2)
+			},
+			"optimeDate" : ISODate("2019-02-20T10:56:19Z"),
+			"syncingTo" : "",
+			"syncSourceHost" : "",
+			"syncSourceId" : -1,
+			"infoMessage" : "",
+			"electionTime" : Timestamp(1550576233, 1007),
+			"electionDate" : ISODate("2019-02-19T11:37:13Z"),
+			"configVersion" : 1,
+			"self" : true,
+			"lastHeartbeatMessage" : ""
+		}
+	],
+	"ok" : 1,
+	"operationTime" : Timestamp(1550660179, 2151),
+	"$gleStats" : {
+		"lastOpTime" : Timestamp(0, 0),
+		"electionId" : ObjectId("7fffffff0000000000000002")
+	},
+	"lastCommittedOpTime" : Timestamp(1550660179, 2144),
+	"$configServerState" : {
+		"opTime" : {
+			"ts" : Timestamp(1550660176, 769),
+			"t" : NumberLong(1)
+		}
+	},
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1550660179, 2151),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+mongoshard1:PRIMARY>
+```
 
 
 
