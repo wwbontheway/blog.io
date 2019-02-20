@@ -1,4 +1,3 @@
-```
 ---
 layout: post
 title: MongoDB复制集同步问题处理-修改oplog大小
@@ -7,7 +6,8 @@ categories: MongoDB
 tags: [MongoDB]
 description: MongoDB复制集同步问题处理。
 ---
-```
+
+
 比较尴尬的事情总会发生，新搭建的一套分片+复制集因为oom被os干掉了-。-
 被干掉的是一个分片中的复制集的一个成员，另一台secondary节点自动升级为primary。
 先将其中被干掉的分片启动：
