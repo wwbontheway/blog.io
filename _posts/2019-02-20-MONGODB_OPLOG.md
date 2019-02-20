@@ -167,7 +167,7 @@ mongoshard1:STARTUP2> rs.status()
 
 ```
 
-在即将完成的时候依然出现recovering。检查一下发现是之前配置的oplog已经不足以支撑当前的数据更新速度，需要将oplog增大
+在即将完成的时候依然出现recovering。检查一下发现是之前配置的oplog已经不足以支撑当前的数据更新速度，简单的说就是备库接收到了sync复制信息，但是因为断档时间太久了，导致sync失败。需要将oplog增大并再次人工同步。
 查看当前的oplog大小：
 
 ```
@@ -216,7 +216,7 @@ now:                     Wed Feb 20 2019 15:05:03 GMT+0800 (CST)
 这里我将oplog的大小调整为2g，需要注意的是这个命令的单位是M，还有一点就是对于复制集来说，要先执行secondary，然后最后在执行primary。更多关于这个命令的信息MongoDB的官方文档有，这里附上连接：
 https://docs.mongodb.com/manual/tutorial/change-oplog-size/#oplog
 
-
+更改之后重新同步即可。
 
 
 
